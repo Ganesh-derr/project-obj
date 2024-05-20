@@ -1,0 +1,678 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Communication.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/V2/Northwind/Northwind.svc/$metadata">
+        <edmx:Include Namespace="NorthwindModel"/>
+        <edmx:Include Namespace="ODataWeb.Northwind.Model"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+        
+
+                <!-- <Annotation Term="UI.Facets">
+                
+                <Collection>
+                    <Record Type="UI.ReferenceFacet">
+                        <PropertyValue property="Label" String="First Facet"/>
+                        <PropertyValue property="Target" AnnotationPath="Order_Details/@UI.LineItem"/>
+                        <PropertyValue property="ID" String="idTableFacet"/>
+                    </Record>
+
+                    <Record Type="UI.ReferenceFacet">
+                        <PropertyValue property="Label" String="Second Facet"/>
+                        <PropertyValue property="Target" AnnotationPath="@UI.Identification#orderidentification"/>
+                    </Record>
+
+                </Collection>
+                
+                </Annotation> -->
+
+                 <!-- <Annotation Term="UI.HeaderInfo">
+          <Record>
+              <PropertyValue Property="TypeName" String="Product Text" />
+              <PropertyValue Property="TypeNamePlural" String="TableTitle" />
+              <PropertyValue Property="Title">
+                    <Record Type="UI.DataField">
+                           <PropertyValue Property="Value" Path="Discount" />
+                    </Record>
+              </PropertyValue>
+             <PropertyValue Property="Description">
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="" />
+                    </Record>
+             </PropertyValue>
+       </Record>
+ </Annotation> -->
+            <Annotations Target="NorthwindModel.Order/OrderID"  >
+                <Annotation Term="Common.Text" Path="ShipName"/>
+
+                <Annotation Term="Common.Label" String="Order ka id"/>
+
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="Order_Details"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="OrderID"/>
+                                    <PropertyValue Property="ValueListProperty" String="OrderID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="OrderID"/>
+                                    <PropertyValue Property="ValueListProperty" String="UnitPrice"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="OrderID"/>
+                                    <PropertyValue Property="ValueListProperty" String="Discount"/>
+                                </Record>
+
+                            </Collection>
+                                
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+            </Annotations >
+            
+            <Annotations Target="NorthwindModel.Order/CustomerID">
+            <!-- multipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotationmultipletable2.annotations.annotation -->
+                <Annotation Term="Common.Text" Path="ShipAddress"/>
+                <Annotation Term="Common.Label" String="customer ka Id"/>
+
+                <Annotation Term="Common.ValueList">
+                    <Record Type="Common.ValueListType">
+                        <PropertyValue Property="CollectionPath" String="Orders"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerID"/>
+                                    <PropertyValue Property="ValueListProperty" String="OrderID"/>
+                                </Record>
+                                 <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerID"/>
+                                    <PropertyValue Property="ValueListProperty" String="ShipAddress"/>
+                                </Record>
+                                 <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CustomerID"/>
+                                    <PropertyValue Property="ValueListProperty" String="ShipCity"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations >
+
+            <!-- order  -->
+
+            <Annotations Target="NorthwindModel.Order">
+            <Annotation Term="Common.SemanticKey" >
+                <Collection>
+                    <PropertyPath >OrderID</PropertyPath>
+                    <PropertyPath>ShipCity</PropertyPath>
+                </Collection>
+            </Annotation>
+
+            <!-- selection variant -->
+
+                <Annotation Term="UI.SelectionVariant" Qualifier="Filter1">
+                    <Record Type="UI.SelectionVariantType">
+                        <PropertyValue Property="Text" String="{@i18n>orderid}"/>
+                        <PropertyValue Property="SelectOptions">
+                            <Collection>
+                                <Record Type="UI.SelectOptionType">
+                                    <PropertyValue Property="PropertyName" PropertyPath="Freight"/>
+                                    <PropertyValue Property="Ranges">
+                                        <Collection>
+                                            <Record Type="UI.SelectionRangeType">
+                                                <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+                                                <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/LT"/>
+                                                <PropertyValue Property="Low" Decimal="25.0" />
+                                            </Record>
+                                        </Collection>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+
+
+                <Annotation Term="UI.SelectionVariant" Qualifier="Filter2">
+                    <Record Type="UI.SelectionVariantType">
+                        <PropertyValue Property="SelectOptions">
+                            <Collection>
+                                <Record Type="UI.SelectOptionType">
+                                    <PropertyValue Property="PropertyName" PropertyPath="CustomerID"/>
+                                    <PropertyValue Property="Ranges">
+                                        <Collection>
+                                            <Record Type="UI.SelectionRangeType">
+                                                <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+                                                <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+                                                <PropertyValue Property="Low" String="VINET" />
+                                            </Record>
+                                        </Collection>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Text" String="{i18n>filter2}"/>
+
+                    </Record>
+                </Annotation>
+
+            <!-- Selection variant end -->
+
+            <Annotation Term="UI.LineItem" >
+                <!-- <PropertyValue property="ID" string="idTableString"/> -->
+                    <Collection>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="OrderID"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="ShipCity"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="CustomerID"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Value" Path="Freight"/>
+                        </Record>
+                        <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="rating"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#rating"/>
+                            <!-- <Annotation Term="UI.Importance" EnumMember="UI.ImportanceType/High"/> -->
+                        </Record>
+
+                        <!-- selection variant  -->
+
+                        
+
+                        <!-- <Record Type="UI.DataFieldForAnnotation">
+                        <PropertyValue Property="Label" String="Bullet chart"/>
+                            <PropertyValue Property="Target" AnnotationPath="@UI.Chart#myChart"/>
+
+                        </Record> -->
+                    </Collection>
+                    </Annotation>
+
+                    <!-- <Annotation Term="UI.SelectionVariant" >
+                        <Record Type="UI.SelectionVariantType">
+                            <PropertyValue Property="Parameters">
+                                <Collection>
+                                    <Record Type="UI.Parameter">
+                                        <PropertyValue Property="PropertyName" PropertyPath="Freight"/>
+                                        <PropertyValue Property="PropertyValue" Decimal='32.3800' />
+                                    </Record>
+                                </Collec ></>tion>
+                            </PropertyValue>
+                        </Record>
+                    </Annotation> -->
+                  <Annotation Term="UI.SelectionPresentationVariant" Qualifier="OpenSPVWithPVPath">
+   <Record>
+    <PropertyValue Property="Text" String="{@i18n>open}">
+    </PropertyValue>
+    <PropertyValue Property="SelectionVariant">
+        <Record Type="UI.SelectionVariantType">
+            <PropertyValue Property="Text" String="{@i18n>open}">
+            </PropertyValue>
+            <PropertyValue Property="SelectOptions">
+                <Collection>
+                    <Record Type="UI.SelectOptionType">
+                        <PropertyValue Property="PropertyName" PropertyPath="OrderID" />
+                        <PropertyValue Property="Ranges">
+                            <Collection>
+                               <Record Type="UI.SelectionRangeType">
+                                   <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ" />
+                                   <PropertyValue Property="Low" Int="10250" />
+                                 
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                     </Record>
+                </Collection>
+            </PropertyValue>
+        </Record>
+     </PropertyValue>
+     <PropertyValue Property="PresentationVariant" Path="@UI.PresentationVariant" />
+   </Record>
+</Annotation>
+
+<Annotation Term="UI.PresentationVariant">
+    <Record>
+        <PropertyValue Property="MaxItems" Int="2" />
+        <PropertyValue Property="SortOrder">
+            <Collection>
+                <Record Type="Common.SortOrderType">
+                  <PropertyValue Property="Property" PropertyPath="" />
+                </Record>
+            </Collection>
+        </PropertyValue>
+        <PropertyValue Property="Visualizations">
+            <Collection>
+                <AnnotationPath>@UI.LineItem</AnnotationPath>
+            </Collection>
+        </PropertyValue>
+    </Record>
+</Annotation>
+
+
+                <!-- selection fields -->
+
+                <Annotation Term="UI.SelectionFields" >
+                    <Collection>
+                        <PropertyPath>CustomerID</PropertyPath>
+                        <PropertyPath>OrderDate</PropertyPath>
+                        <PropertyPath>Freight</PropertyPath>
+                        <PropertyPath>OrderID</PropertyPath>
+
+
+                    </Collection>
+                </Annotation>
+
+
+                <Annotation Term="UI.HeaderInfo">
+                    <Record Type="UI.HeaderInfoType">
+                        <PropertyValue Property="TypeName" String="headerInfo"/>
+                        <PropertyValue Property="TypeNamePlural" String="Order table"/>
+                        <PropertyValue Property="Title" >
+                            <Record Type="UI.DataField">
+                                <PropertyValue Property="Value" Path="ShipCity"/>
+                            </Record>
+                        </PropertyValue>    
+                        <PropertyValue Property="Description">
+                            <Record Type="UI.DataField">
+                                <PropertyValue property="Label" String="EmployeeID"/>
+                                <PropertyValue Property="Value" Path="ShipAddress"/>
+                            </Record>
+                            
+                        </PropertyValue>
+                        <!-- <PropertyValue Property="TypeImageUrl" String="REPLACE_WITH_TYPEIMAGE_PATH"/> -->
+                        <PropertyValue Property="ImageUrl" String="https://t4.ftcdn.net/jpg/05/89/61/63/360_F_589616303_txXzjmO1ICyH1Hotty3H5zHBFJmgvBak.jpg"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="headerfacet">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="ship City"/>
+                        <PropertyValue Property="Value" Path="ShipCity"/>
+                        <PropertyValue Property="Criticality" Path="OrderID"/>
+                    </Record>
+                    
+                </Annotation>
+                
+                <Annotation Term="UI.DataPoint" Qualifier="headerfacet1">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="Employee Id"/>
+                        <PropertyValue Property="Value" Path="EmployeeID"/>
+                        <PropertyValue Property="Criticality" Path="OrderID"/>
+                    </Record>
+                    
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="headerfacet2">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Title" String="Ship City"/>
+                        <PropertyValue Property="Value" Path="ShipCity"/>
+                        <PropertyValue Property="Criticality" Path="OrderID"/>
+                    </Record>
+                </Annotation>
+                
+                <Annotation Term="UI.HeaderFacets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#headerfacet"/>
+                        </Record>
+                         <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#headerfacet1"/>
+                        </Record>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#headerfacet2"/>
+                        </Record>
+                        
+                    </Collection>
+                </Annotation>
+
+                <!-- trial -->
+
+
+                <!-- <Annotation Term="UI.LineItem">
+                <Collection>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="OrderID"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="Quantity"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="UnitPrice"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="ProductID"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                        <PropertyValue Property="Value" Path="Discount"/>
+                    </Record>
+                </Collection>
+            </Annotation> -->
+            <!-- <Annotation Term="UI.SelectionVariant" Qualifier="QLT">
+                <Record Type="UI.SelectionVariantType">
+                    <PropertyValue Property="SelectOptions">
+                        <Collection>
+                            <Record Type="UI.SelectOptionType">
+                                <PropertyValue Property="PropertyName" PropertyPath="Quantity"/>
+                                <PropertyValue Property="Ranges">
+                                    <Collection>
+                                        <Record Type="UI.SelectionRangeType">
+                                            <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+                                            <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/LT"/>
+                                            <PropertyValue Property="Low" Int="15"/>
+                                        </Record>
+                                    </Collection>
+                                </PropertyValue>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="Text" String="Tab1"/>
+                </Record>
+            </Annotation>
+            <Annotation Term="UI.SelectionVariant" Qualifier="QGT">
+                <Record Type="UI.SelectionVariantType">
+                    <PropertyValue Property="SelectOptions">
+                        <Collection>
+                            <Record Type="UI.SelectOptionType">
+                                <PropertyValue Property="PropertyName" PropertyPath="Quantity"/>
+                                <PropertyValue Property="Ranges">
+                                    <Collection>
+                                        <Record Type="UI.SelectionRangeType">
+                                            <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+                                            <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/GT"/>
+                                            <PropertyValue Property="Low" Int="15"/>
+                                        </Record>
+                                    </Collection>
+                                </PropertyValue>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="Text" String="Tab2"/>
+                </Record>
+            </Annotation> -->
+            <!-- <Annotation Term="UI.Facets">
+                <Collection>
+                    <Record Type="UI.ReferenceFacet">
+                        <PropertyValue Property="Label" String="FirstFacet"/>
+                        <PropertyValue Property="Target" AnnotationPath="Order_Details/@UI.LineItem" />
+ 
+                        <PropertyValue Property="ID" String="idTableFacet"     />
+                    </Record>
+                    <Record Type="UI.ReferenceFacet" >
+                          <PropertyValue  Property="Label" String="SecondFacet"  />
+                          <PropertyValue Property="Target" AnnotationPath="@UI.Identification#orderidentification" />  
+                    </Record>
+                </Collection>
+ 
+            </Annotation> -->
+       
+     <Annotation Term="UI.Facets" >
+        <Collection>
+            
+            <Record Type="UI.ReferenceFacet">
+                <PropertyValue Property="Label" String="General Information"/>
+                <PropertyValue Property="ID" String="idFieldGroup"/>
+                <PropertyValue Property="Target" AnnotationPath="@UI.FieldGroup#fieldGroup"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+                <PropertyValue Property="Label" String="General"/>
+                <PropertyValue Property="ID" String="idFieldGroup1"/>
+                <PropertyValue Property="Target" AnnotationPath="Order_Details/@UI.LineItem"/>
+            </Record>
+            <Record Type="UI.ReferenceFacet">
+                        <PropertyValue Property="Label" String="FirstFacet"/>
+                <PropertyValue Property="ID" String="idFieldGroup12"/>
+
+                        <PropertyValue Property="Target" AnnotationPath="Order_Details/@UI.LineItem" />
+ 
+                        <!-- <PropertyValue Property="ID" String="idTableFacet"     /> -->
+                    </Record>
+                    <!-- <Record Type="UI.ReferenceFacet" >
+                          <PropertyValue  Property="Label" String="SecondFacet"  />
+                          <PropertyValue Property="Target" AnnotationPath="@UI.Identification#orderidentification" />  
+                    </Record> -->
+            <!-- <Record Type="UI.ReferenceFacet">
+                        <PropertyValue Property="Label" String="FirstFacet"/>
+                        <PropertyValue Property="Target" AnnotationPath="Order_Details/@UI.LineItem" />
+ 
+                        <PropertyValue Property="ID" String="idTableFacet"     />
+                    </Record> -->
+             <!-- <Record Type="UI.ReferenceFacet">
+                <PropertyValue Property="Label" String="General Information"/>
+                <PropertyValue Property="ID" String="idFieldGroup1"/>
+                <PropertyValue Property="Target" AnnotationPath="Order_Details/@UI.LineItem"/>
+            </Record> -->
+        </Collection>
+    </Annotation>
+    <Annotation Term="UI.Identification" >
+        <Collection>
+            <Record Type="UI.DataField">
+                <PropertyValue Property="Value" <Label text="" labelFor="" />
+                <Input
+                    id=""
+                    placeholder="Hii hello"
+                    showSuggestion="true"
+                    showValueHelp="true"
+                    valueHelpRequest=".onValueHelpRequest"
+                    suggestionItems="{}">
+                        <suggestionItems>
+                            <core:Item text="itemName" />
+                        </suggestionItems>
+                </Input>/>
+            </Record>
+        </Collection>
+    </Annotation>
+    <!-- <Annotation Term="UI.LineItem" >
+        <Collection>
+            <Record Type="UI.DataField">
+                <PropertyValue property="Value" Path="OrderID"/>
+            </Record>
+            <Record Type="UI.DataField">
+                <PropertyValue property="Value" Path="CustomerID"/>
+            </Record>
+
+        </Collection>
+    </Annotation> -->
+               
+                <Annotation Term="UI.FieldGroup" Qualifier="fieldGroup">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <!-- <PropertyValue property="Label" String="Order Id"/> -->
+                                    <PropertyValue Property="Label" String='Order Id' ></PropertyValue >
+                                    <PropertyValue Property="Value" Path="OrderID"/>
+                                </Record>   
+                                 <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Order_Details/ProductID"/>
+                                    <PropertyValue Property="Label" String='Product ID'/>
+
+                                </Record>
+                                 <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Order_Details/Quantity"/>
+                                    <PropertyValue Property="Label" String='Quantity'/>
+
+                                </Record>
+                                 <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Order_Details/Discount"/>
+                                    <PropertyValue Property="Label" String='Discount'/>
+
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="rating">
+                    <Record>
+                        <PropertyValue Property="Value" Path="Freight"/>
+                        <PropertyValue Property="TargetValue" Decimal="100.0"/>
+                        <PropertyValue Property="Visualization" EnumMember="UI.VisualizationType/Progress"/>
+                    </Record>
+                </Annotation>
+                <!-- <Annotation Term="UI.DataPoint" Qualifier="myFrieght">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="OrderID"/>
+                        <PropertyValue Property="CriticalityCalculation">
+                            <Record Type="UI.CriticalityCalculationType">
+                                <PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+                                <PropertyValue Property="DeviationRangeLowValue" Decimal="10.00"/>
+                                <PropertyValue Property="ToleranceRangeLowValue" Decimal="100.00"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation> -->
+
+                <!-- <Annotation Term="UI.Chart" Qualifier="myChart">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Bullet"/>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>OrderID</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="DataPoint" AnnotationPath="@UI.DataPoint#myFrieght"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                        
+                </Annotation> -->
+            </Annotations>
+            <Annotations Target="NorthwindModel.Order_Detail"  >
+
+                <Annotation  Term="UI.LineItem" >
+                <!-- <PropertyValue property="ID" string="idTableString"/> -->
+                    <Collection>
+                    <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="OrderID"/>
+                    <!-- <Annotation Term="UI.Hidden" Bool="true"  ></Annotation > -->
+                    </Record>
+                    <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="Discount"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="ProductID"/>
+                    </Record>
+                     <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="Order/Freight"/>
+                    </Record>
+                     <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="Quantity"/>
+                    </Record>
+
+                    </Collection>
+                    </Annotation>
+
+
+                    <Annotation Term="UI.SelectionVariant" Qualifier="Filter11">
+                    <Record Type="UI.SelectionVariantType">
+                        <PropertyValue Property="SelectOptions">
+                            <Collection>
+                                <Record Type="UI.SelectOptionType">
+                                    <PropertyValue Property="PropertyName" PropertyPath="Quantity"/>
+                                    <PropertyValue Property="Ranges">
+                                        <Collection>
+                                            <Record Type="UI.SelectionRangeType">
+                                                <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+                                                <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/EQ"/>
+                                                <PropertyValue Property="Low" Int="5" />
+                                            </Record>
+                                        </Collection>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Text" String="filter11"/>
+
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.SelectionVariant" Qualifier="Filter12">
+                    <Record Type="UI.SelectionVariantType">
+                        <PropertyValue Property="SelectOptions">
+                            <Collection>
+                                <Record Type="UI.SelectOptionType">
+                                    <PropertyValue Property="PropertyName" PropertyPath="Quantity"/>
+                                    <PropertyValue Property="Ranges">
+                                        <Collection>
+                                            <Record Type="UI.SelectionRangeType">
+                                                <PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+                                                <PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/GT"/>
+                                                <PropertyValue Property="Low" Int="0" />
+                                            </Record>
+                                        </Collection>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Text" String='filter12'/>
+
+                    </Record>
+                </Annotation>
+
+
+
+
+            </Annotations >
+
+
+            <!-- <Annotations Term="NorthwindModel.Order_Details" Qualifier="orderDetailsFacet">
+                <Annotation Term="UI.LineItem">
+                    <Collection>
+                    <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="CustomerId"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="UnitPrice"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="CustomerId"/>
+                    </Record>
+                    <Record Type="UI.DataField">
+                    <PropertyValue Property="Value" Path="Discount"/>
+                    </Record>
+                    </Collection>
+                    </Annotation>
+
+            </Annotations> -->
+            
+            <!-- <Annotations Target="NorthwindModel.Order_Detail">
+                <Annotation Term="UI.FieldGroup" Qualifier="fieldGroup">
+                    <Record Type="UI.FieldGroupType">
+                        <PropertyValue Property="Data">
+                            <Collection>
+                                <Record Type="UI.DataField">
+                                    <PropertyValue Property="Value" Path="Order/RequiredDate"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.Facets">
+                    <Collection>
+                        <Record Type="UI.ReferenceFacet">
+                            <PropertyValue Property="Label" String="General Information1"/>
+                            <PropertyValue Property="ID" String="idFieldGroup1"/>
+                            <PropertyValue Property="Target" AnnotationPath="Order/@UI.FieldGroup#fieldGroup"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Annotations> -->
+
+            
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

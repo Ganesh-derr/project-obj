@@ -1,0 +1,252 @@
+{
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "multipletable2",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:lrop",
+            "version": "1.10.3",
+            "toolsId": "0dd8b824-6a8d-4c97-8fdb-cb6fd3bb135d"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/V2/Northwind/Northwind.svc/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.120.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "multipletable2.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.viewExtensions": {
+                    "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                        "ResponsiveTableColumnsExtension|Orders|tab_1": {
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "multipletable2.ext.fragments.ResponsiveTableColumns",
+                            "type": "XML"
+                        },
+                        "ResponsiveTableCellsExtension|Orders|tab_1": {
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "multipletable2.ext.fragments.ResponsiveTableCells",
+                            "type": "XML"
+                        }
+                    },
+                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {}
+                },
+                "sap.ui.controllerExtensions": {
+                    "sap.suite.ui.generic.template.ListReport.view.ListReport": {
+                        "controllerName": "multipletable2.ext.controller.ListReportExt",
+                        "sap.ui.generic.app": {
+                            "Orders": {
+                                "EntitySet": "Orders",
+                                "Actions": {
+                                    "navigateId": {
+                                        "id": "navigateIdButton",
+                                        "text": "listItems",
+                                        "press": "bindingPath",
+                                        "requiresSelection": true
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "sap.suite.ui.generic.template.ObjectPage.view.Details": {
+                        "controllerName": "multipletable2.ext.controller.ObjectPageExt",
+                        "sap.ui.generic.app": {
+                            "Orders": {
+                                "EntitySet": "Orders",
+                                "Header": {
+                                    "Actions": {
+                                        "idActionButton": {
+                                            "id": "idActionButtonButton",
+                                            "text": "heloo",
+                                            "press": "hoolaaalaaa",
+                                            "requiresSelection": false
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui.generic.app": {
+        "_version": "1.3.0",
+        "settings": {
+            "forceGlobalRefresh": false,
+            "objectPageHeaderType": "Dynamic",
+            "considerAnalyticalParameters": true,
+            "showDraftToggle": false,
+            "flexibleColumnLayout": {
+                "defaultTwoColumnLayoutType": "TwoColumnsBeginExpanded",
+                "defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+            }
+        },
+        "pages": {
+            "ListReport|Orders": {
+                "entitySet": "Orders",
+                "component": {
+                    "name": "sap.suite.ui.generic.template.ListReport",
+                    "list": true,
+                    "settings": {
+                        "condensedTableLayout": true,
+                        "smartVariantManagement": true,
+                        "enableTableFilterInPageVariant": true,
+                        "quickVariantSelection": {
+                            "variants": {
+                                "0": {
+                                    "key": "_tab1",
+                                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Filter1"
+                                },
+                                "1": {
+                                    "key": "_tab2",
+                                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#Filter2"
+                                }
+                            }
+                        },
+                        "filterSettings": {
+                            "dateSettings": {
+                                "useDateRange": true
+                            }
+                        }
+                    }
+                },
+                "pages": {
+                    "ObjectPage|Orders": {
+                        "entitySet": "Orders",
+                        "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                        "component": {
+                            "name": "sap.suite.ui.generic.template.ObjectPage",
+                            "settings": {
+                                "tableType": "ResponsiveTable",
+                                "hideTableVarientManagement": true,
+                                "editableHeaderContent": true,
+                            
+                                "sections": {
+                                    "idFieldGroup12": {
+                                        "quickVariantSelection": {
+                                            "showCounts": true,
+                                            
+                                            "variants": {
+                                                "0": {
+                                                    "key": "_tab1",
+                                                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#filter11"
+                                                },
+                                                "1": {
+                                                    "key": "_tab2",
+                                                    "annotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#filter12"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "pages": {
+                            "ObjectPage|Order_Details": {
+                                "navigationProperty": "Order_Details",
+                                "entitySet": "Order_Details",
+                                "defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+                                "component": {
+                                    "name": "sap.suite.ui.generic.template.ObjectPage"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "transactional"
+    }
+}

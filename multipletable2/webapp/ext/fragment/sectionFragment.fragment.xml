@@ -1,0 +1,52 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+    <!-- <Text text="{}"/> -->
+
+    <!-- <List
+        backgroundDesign="Solid"
+        items="{/Orders}"
+    >
+        <items>
+            <ObjectListItem
+                activeIcon=""
+                icon=""
+                iconDensityAware="true"
+                intro="{ShipCity}"
+                introTextDirection="Inherit"
+                number=""
+                numberState="None"
+                numberTextDirection="Inherit"
+                numberUnit=""
+                title=""
+                titleTextDirection="Inherit"
+            >
+                <attributes>
+                    
+                </attributes>
+                <firstStatus>
+                </firstStatus>
+                <markers>
+                </markers>
+                <secondStatus>
+                </secondStatus>
+            </ObjectListItem>
+        </items>
+    </List> -->
+     <Table items="{Oeder_Details}" id="tableId">
+                <columns>
+                    <Column>
+                        <Text text="UnitPrice"></Text>
+                    </Column>
+                    <Column>
+                        <Text text="Discount"></Text>
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem >
+                        <cells>
+                            <Text text='{UnitPrice}'></Text>
+                            <Text text='{Discount}'></Text>
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+</core:FragmentDefinition>

@@ -1,0 +1,10 @@
+{
+"base": "./dist",
+"conn_usestrictssl" : false, "conn_server":"https://183.82.109.231:44310//", 
+"conn_client" : "100", 
+"conn_user": "KING", 
+"conn_password": "Welcome123",
+"abap_package": "$TMP",
+"abap_bsp": "ZSIG_GAN_FIORI", 
+"abap_bsp_text": "UI5 Fiori APP"
+}
