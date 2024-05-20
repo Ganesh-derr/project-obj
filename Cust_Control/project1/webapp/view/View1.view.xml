@@ -1,0 +1,20 @@
+<mvc:View controllerName="project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:hari="project1.controls" >
+    <Page id="page" title="{i18n>title}">
+        <content>
+
+    
+            <!-- <hari:myCustom ninja="Wow, Amazing" turtle="green" deepa="3px dashed blue" ></hari:myCustom>
+        
+           <hari:myCustom maddy="white" pearl="red" shin="back" ></hari:myCustom>
+          
+           <hari:myCustom mille="underline" bella="Green" brown="hanna bakers"></hari:myCustom> -->
+
+           <hari:myCustom maddy="white" pearl="red" shin="back" ninja="Wow, Amazing" turtle="green" deepa="3px dashed blue" mille="underline" bella="Green" brown="hanna bakers" moscow="black" berlin="2px solid black" jack="Name" rio="Age" santo="submit" ></hari:myCustom>
+           
+
+
+        </content>
+    </Page>
+</mvc:View>
