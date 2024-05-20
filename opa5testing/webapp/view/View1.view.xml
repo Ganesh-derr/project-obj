@@ -1,0 +1,13 @@
+<mvc:View controllerName="opa5testing.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <App >
+        <pages>
+            <Page id="page" title="{i18n>title}">
+                    <content >
+                        <Button text="Press me" press="onPress" id="ButtonId"></Button>
+                    </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
