@@ -1,0 +1,45 @@
+<mvc:View xmlns:table="sap.ui.table" controllerName="readdatafromexcel.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns:u="sap.ui.unified"
+    xmlns="sap.m">
+   <App >
+        <pages>
+             <Page id="page" title="{i18n>title}">
+                <content>
+                    <u:FileUploader  id="FileUploaderId" sameFilenameAllowed="true" iconOnly="false" buttonOnly="true" fileType="XLSX,xlsx"
+									icon="sap-icon://upload" iconFirst="true" style="Emphasized" change="onUpload"></u:FileUploader>
+                    <TextArea id="textAreaId" editable="false" width="500px" height="200px"></TextArea>
+
+
+
+                    <Table items="{data>/data}">
+
+                        <columns>
+                            <Column >
+                                <Text text="product Id"></Text>
+                            </Column>
+                            <Column >
+                                <Text text="Name Id"></Text>
+                            </Column>
+                            <Column >
+                                <Text text="Description"></Text>
+                            </Column>
+                          
+                        </columns>
+                        <items>
+                            <ColumnListItem >
+                                <cells>
+                                    <Text text="{data>Discount}"></Text>
+                                    <Text text="{data>OrderID}"></Text>
+                                    <Text text="{data>OrderID}"></Text>
+
+                                    
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+
+                    </Table>
+                </content>
+             </Page>
+        </pages>
+   </App>
+</mvc:View>
